@@ -21,7 +21,10 @@ namespace SWQ.Logic
             Console.WriteLine($"{countryCode} {areaCode} {mainNumber} {extension}");
             Console.WriteLine($"Number type: {numberType}");
 
-            var phoneNumber = new PhoneNumber(countryCode, Int32.Parse(areaCode), Int32.Parse(mainNumber), 0);
+
+            // TODO: Extension iwie lösen 
+            // Entweder PhoneNumber nullable machen ODER verschiedene Constructor
+            var phoneNumber = new PhoneNumber(countryCode, (areaCode != string.Empty ? (Int32.Parse(areaCode)) :  null), Int32.Parse(mainNumber), 0);
             return phoneNumber;
         }
     }
