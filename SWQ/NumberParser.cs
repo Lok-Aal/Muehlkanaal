@@ -14,12 +14,11 @@ namespace SWQ.Logic
             var areaCode = internationalNumber.Substring(internationalNumber.IndexOf(" "), internationalNumber.LastIndexOf(" ") - internationalNumber.IndexOf(" "));
             var mainNumber = internationalNumber.Substring(internationalNumber.LastIndexOf(" "));
             var regionInfoLength = phoneNumberUtil.GetLengthOfGeographicalAreaCode(parseResult);
-            Console.WriteLine(regionInfoLength);
-            var regionInfo = mainNumber.Substring(0, regionInfoLength);
+            Console.WriteLine(areaCode);
             var extension = parseResult.Extension;
             var numberType = phoneNumberUtil.GetNumberType(parseResult);
             Console.WriteLine(extension.GetType());
-            Console.WriteLine($"{countryCode} {regionInfo} {mainNumber} {extension}");
+            Console.WriteLine($"{countryCode} {areaCode} {mainNumber} {extension}");
             Console.WriteLine($"Number type: {numberType}");
 
             var phoneNumber = new PhoneNumber(countryCode, Int32.Parse(areaCode), Int32.Parse(mainNumber), 0);
