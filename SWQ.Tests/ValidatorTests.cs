@@ -52,5 +52,37 @@ namespace SWQ.Tests.Logic
             var result = Validator.ValidateNumber(number);
             Assert.True(result);
         }
+
+        [Fact]
+        public void Validator_ValidateNumber_AcceptsCustomerExample1()
+        {
+            var number = "+49 0201 123456";
+            var result = Validator.ValidateNumber(number);
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void Validator_ValidateNumber_AcceptsCustomerExample2()
+        {
+            var number = "+44 0201123456";
+            var result = Validator.ValidateNumber(number);
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void Validator_ValidateNumber_AcceptsCustomerExample3()
+        {
+            var number = "+49 (941) 790-4780";
+            var result = Validator.ValidateNumber(number);
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void Validator_ValidateNumber_AcceptsCustomerExample4()
+        {
+            var number = "+440201123456";
+            var result = Validator.ValidateNumber(number);
+            Assert.True(result);
+        }
     }
 }
