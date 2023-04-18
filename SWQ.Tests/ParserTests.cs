@@ -10,7 +10,7 @@ namespace SWQ.Tests.Logic
         {
             var number = "+49152833720339";
             var result = NumberParser.ParseNumber(number);
-            Assert.Equal<string>("49152833720339", result.ToString());
+            Assert.Equal<string>("+49-(1528)-33720339", result.ToString());
         }
     }
 }

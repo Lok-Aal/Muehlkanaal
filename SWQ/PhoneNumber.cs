@@ -20,10 +20,10 @@ namespace SWQ.Model {
         public int? Extension { get; set; }
 
         public override string ToString() {
-            return '+' + (CountryCode.ToString() ?? "") + 
-            '-' + '(' + (AreaCode.ToString() ?? "") + ')' + 
-            '-' + (LocalNumber.ToString() ?? "") + 
-            (('-' + Extension.ToString()) ?? "");
+            return '+' + CountryCode.ToString() + 
+            '-' + '(' + AreaCode.ToString() + ')' + 
+            '-' + LocalNumber.ToString() + 
+            (Extension != null ? ('-' + (Extension.ToString())) : "");
         }
     }
 }
