@@ -21,10 +21,7 @@ namespace Muehlkanaal.NumberParser.Logic
             Console.WriteLine($"{countryCode} {areaCode} {mainNumber} {extension}");
             Console.WriteLine($"Number type: {numberType}");
 
-
-            // TODO: Extension iwie lösen 
-            // Entweder PhoneNumber nullable machen ODER verschiedene Constructor
-            var phoneNumber = new PhoneNumber(countryCode, (areaCode != string.Empty ? (Int32.Parse(areaCode)) :  null), Int32.Parse(mainNumber), 0);
+            var phoneNumber = new PhoneNumber(countryCode, (areaCode != string.Empty ? (Int32.Parse(areaCode)) : null), Int32.Parse(mainNumber), 0);
             return phoneNumber;
         }
     }
