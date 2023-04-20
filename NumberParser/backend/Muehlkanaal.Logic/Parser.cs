@@ -1,4 +1,5 @@
 using Muehlkanaal.NumberParser.Model;
+using System.Text.RegularExpressions;
 
 namespace Muehlkanaal.NumberParser.Logic
 {
@@ -8,16 +9,23 @@ namespace Muehlkanaal.NumberParser.Logic
         public static PhoneNumber ParseNumber(string number)
         {
             var phoneNumberUtil = PhoneNumbers.PhoneNumberUtil.GetInstance();
+            Console.WriteLine(number);
+            var segregators = Regex.Matches(number, @"[\-/ ]", RegexOptions.None,
+                                               TimeSpan.FromSeconds(1));
+            Console.WriteLine($"Segregator count: {segregators.Count}");
+            foreach (Match match in segregators)
+            {
+                Console.WriteLine($"{match.Value} at {match.Index}");
+            }
+            Console.WriteLine();
             var parseResult = phoneNumberUtil.Parse(number, null);
             var internationalNumber = phoneNumberUtil.Format(parseResult, PhoneNumbers.PhoneNumberFormat.INTERNATIONAL);
             var countryCode = parseResult.CountryCode;
             var areaCode = internationalNumber.Substring(internationalNumber.IndexOf(" "), internationalNumber.LastIndexOf(" ") - internationalNumber.IndexOf(" "));
             var mainNumber = internationalNumber.Substring(internationalNumber.LastIndexOf(" "));
             var regionInfoLength = phoneNumberUtil.GetLengthOfGeographicalAreaCode(parseResult);
-            Console.WriteLine(areaCode);
             var extension = parseResult.Extension;
             var numberType = phoneNumberUtil.GetNumberType(parseResult);
-            Console.WriteLine(extension.GetType());
             Console.WriteLine($"{countryCode} {areaCode} {mainNumber} {extension}");
             Console.WriteLine($"Number type: {numberType}");
 
