@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace SWQ.Logic
+namespace Muehlkanaal.NumberParser.Logic
 
 {
     public static class Validator

@@ -1,4 +1,4 @@
-namespace SWQ.Model {
+namespace Muehlkanaal.NumberParser.Model {
     public class PhoneNumber {
 
         public PhoneNumber(int countryCode, int areaCode, int localNumber, int extension) {

@@ -1,7 +1,7 @@
 using Xunit;
-using SWQ.Logic;
+using Muehlkanaal.NumberParser.Logic;
 
-namespace SWQ.Tests.Logic
+namespace Muehlkanaal.Tests.Logic
 {
     public class ValidatorTests
     {

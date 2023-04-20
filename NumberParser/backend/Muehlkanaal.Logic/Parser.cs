@@ -1,9 +1,9 @@
-using SWQ.Model;
+using Muehlkanaal.NumberParser.Model;
 
-namespace SWQ.Logic
+namespace Muehlkanaal.NumberParser.Logic
 {
 
-    public static class NumberParser
+    public static class Parser
     {
         public static PhoneNumber ParseNumber(string number)
         {

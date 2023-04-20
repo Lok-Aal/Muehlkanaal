@@ -1,7 +1,7 @@
 using Xunit;
-using SWQ.Model;
+using Muehlkanaal.NumberParser.Model;
 
-namespace SWQ.Tests.Logic
+namespace Muehlkanaal.Tests.Logic
 {
     public class PhoneNumberTests
     {

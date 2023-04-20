@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SWQ\SWQ.csproj" />
+    <ProjectReference Include="..\Muehlkanaal.Logic\Muehlkanaal.NumberParser.csproj" />
   </ItemGroup>
 
 </Project>
