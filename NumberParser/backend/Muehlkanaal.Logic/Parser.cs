@@ -14,15 +14,17 @@ namespace Muehlkanaal.NumberParser.Logic
             var areaCode = internationalNumber.Substring(internationalNumber.IndexOf(" "), internationalNumber.LastIndexOf(" ") - internationalNumber.IndexOf(" "));
             var mainNumber = internationalNumber.Substring(internationalNumber.LastIndexOf(" "));
             var regionInfoLength = phoneNumberUtil.GetLengthOfGeographicalAreaCode(parseResult);
-            Console.WriteLine(regionInfoLength);
-            var regionInfo = mainNumber.Substring(0, regionInfoLength);
+            Console.WriteLine(areaCode);
             var extension = parseResult.Extension;
             var numberType = phoneNumberUtil.GetNumberType(parseResult);
             Console.WriteLine(extension.GetType());
-            Console.WriteLine($"{countryCode} {regionInfo} {mainNumber} {extension}");
+            Console.WriteLine($"{countryCode} {areaCode} {mainNumber} {extension}");
             Console.WriteLine($"Number type: {numberType}");
 
-            var phoneNumber = new PhoneNumber(countryCode, Int32.Parse(areaCode), Int32.Parse(mainNumber), 0);
+
+            // TODO: Extension iwie lösen 
+            // Entweder PhoneNumber nullable machen ODER verschiedene Constructor
+            var phoneNumber = new PhoneNumber(countryCode, (areaCode != string.Empty ? (Int32.Parse(areaCode)) :  null), Int32.Parse(mainNumber), 0);
             return phoneNumber;
         }
     }
