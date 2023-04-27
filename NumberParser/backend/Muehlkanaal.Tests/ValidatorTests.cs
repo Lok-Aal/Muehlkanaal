@@ -22,9 +22,9 @@ namespace Muehlkanaal.Tests.Logic
         }
 
         [Fact]
-        public void Validator_ValidateNumber_DoesNotAcceptNumberWithMoreThanTwoWhitespaces()
+        public void Validator_ValidateNumber_DoesNotAcceptNumberWithMoreThanThreeWhitespaces()
         {
-            var number = "+49152 8337 203 3";
+            var number = "+49 152 8337 203 3";
             var result = Validator.ValidateNumber(number);
             Assert.False(result);
         }
@@ -32,7 +32,7 @@ namespace Muehlkanaal.Tests.Logic
         [Fact]
         public void Validator_ValidateNumber_AcceptsStringSplitWithWhitespace()
         {
-            var number = "+49152 8337 2033";
+            var number = "+49 152 8337 2033";
             var result = Validator.ValidateNumber(number);
             Assert.True(result);
         }
@@ -40,7 +40,7 @@ namespace Muehlkanaal.Tests.Logic
         [Fact]
         public void Validator_ValidateNumber_AcceptsStringSplitWithForwardslash()
         {
-            var number = "+49152/8337/2033";
+            var number = "+49 152/8337/2033";
             var result = Validator.ValidateNumber(number);
             Assert.True(result);
         }
@@ -48,7 +48,7 @@ namespace Muehlkanaal.Tests.Logic
         [Fact]
         public void Validator_ValidateNumber_AcceptsStringSplitWithHyphen()
         {
-            var number = "+49152-8337-2033";
+            var number = "+49 152-8337-2033";
             var result = Validator.ValidateNumber(number);
             Assert.True(result);
         }
