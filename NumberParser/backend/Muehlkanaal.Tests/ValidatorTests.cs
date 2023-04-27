@@ -8,7 +8,7 @@ namespace Muehlkanaal.Tests.Logic
         [Fact]
         public void Validator_ValidateNumber_WorksProperlyWithNumberWithoutDelimiters()
         {
-            var number = "+49152833720339";
+            var number = "+4915283372033";
             var result = Validator.ValidateNumber(number);
             Assert.True(result);
         }
@@ -83,6 +83,30 @@ namespace Muehlkanaal.Tests.Logic
             var number = "+440201123456";
             var result = Validator.ValidateNumber(number);
             Assert.True(result);
+        }
+
+        [Fact]
+        public void Validator_ValidateNumber_AcceptsPhoneNumberWithLengthLessThan15()
+        {
+            var number = "+440201123456";
+            var result = Validator.ValidateNumber(number);
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void Validator_ValidateNumber_AcceptsPhoneNumberWithLengthEquals15()
+        {
+            var number = "+440201123456111";
+            var result = Validator.ValidateNumber(number);
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void Validator_ValidateNumber_DoesNotAcceptPhoneNumberWithLengthGreaterThan15()
+        {
+            var number = "+4402011234561111";
+            var result = Validator.ValidateNumber(number);
+            Assert.False(result);
         }
     }
 }

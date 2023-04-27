@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using Muehlkanaal.NumberParser.Model;
 
 namespace Muehlkanaal.NumberParser.Logic
 
@@ -19,9 +20,23 @@ namespace Muehlkanaal.NumberParser.Logic
                 +49 (941) 790-4780
                 +440201123456
             */
+            if (Regex.Matches(phoneNumber, @"[0-9]").Count > 15) {
+                return false;
+            }
             var validationRegex = @"^[+][0-9]{1,3}(\s(\([0-9]+\)|0?[1-9]+)[\-/ ]?[0-9]*[\-/ ]?[0-9]*|[0-9]+)$";
-            bool isValidNumber = Regex.Match(phoneNumber, validationRegex).Success;
-            return isValidNumber;
+            bool matchesValidNumbers = Regex.Match(phoneNumber, validationRegex).Success;
+            if (!matchesValidNumbers) {
+                Console.WriteLine("Regex does not match");
+            }
+
+            var phoneNumberUtil = PhoneNumbers.PhoneNumberUtil.GetInstance();
+            var parseResult = phoneNumberUtil.Parse(phoneNumber, null);
+            bool isValidForParser = phoneNumberUtil.IsValidNumber(parseResult);
+            if (!isValidForParser) {
+                Console.WriteLine("Not valid number for parser");
+            }
+
+            return matchesValidNumbers && isValidForParser;
         }
     }
 }
