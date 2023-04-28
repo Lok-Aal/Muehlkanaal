@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { Ref, ref } from 'vue'
+import { salutation, title, firstname, lastname, gender } from '@/services/contactsplitter-service'
 
-const input = ref('')
-const submitted = ref(false)
-
-const anrede = ref('')
-const titel = ref('')
-const vorname = ref('')
-const nachname = ref('')
-const geschlecht = ref('')
+const input: Ref<string> = ref('')
+const submitted: Ref<boolean> = ref(false)
 
 function submit() {
   submitted.value = true
@@ -43,19 +38,19 @@ function store() {
 
   <div class="changingArea" v-if="submitted">
     <p>Anrede:</p>
-    <input v-model="anrede" />
+    <input v-model="salutation" />
 
     <p>Titel:</p>
-    <input v-model="titel" />
+    <input v-model="title" />
 
     <p>Vorname:</p>
-    <input v-model="vorname" />
+    <input v-model="firstname" />
 
     <p>Nachname:</p>
-    <input v-model="nachname" />
+    <input v-model="lastname" />
 
     <p>Geschlecht:</p>
-    <input v-model="geschlecht" />
+    <input v-model="gender" />
 
     <button @click="store()" v-if="submitted">Speichern</button>
   </div>
@@ -64,16 +59,16 @@ function store() {
 <style scoped>
 .inputArea {
   width: 380px;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 .submittedArea {
   width: 380px;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 .changingArea {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #heading {
