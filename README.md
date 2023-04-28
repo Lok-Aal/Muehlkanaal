@@ -20,9 +20,9 @@ Als Benutzer möchte ich in der Lage sein, die einzelnen Bestandteile manuell an
 **Akzeptanzkriterien:** Der Benutzer kann die zerlegten Bestandteile vor der Speicherung über manuelle Eingabe anpassen.
 
 ### User Story 3:
-Als Benutzer möchte neue Titel (komischer Lernaal)  
-**Priorität:** mittel  
-**Akzeptanzkritierien:** 
+Als Benutzer möchte neue Titel hinzufügen können, um somit die Menge der parsbaren Titel zu vergrößern.  
+**Priorität:** niedrig  
+**Akzeptanzkritierien:** Es ist möglich neue Titel hinzuzufügen.
 
 ### User Story 4: 
 Als Benutzer möchte ich über das Tool eine standardisierte Briefanrede generieren lassen können, um eine einheitliche Kommunikation zu gewährleisten.
