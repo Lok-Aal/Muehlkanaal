@@ -1,25 +1,50 @@
 # contactsplitter
 
-This template should help get you started developing with Vue 3 in Vite.
+Projekt im Modul *Softwarequalität* zur Erstellung eines Kontaktsplitters
 
-## Recommended IDE Setup
+## Content
+1. [User Stories](#user-stories)
+2. [Project Setup](#project-setup)
+3. [Definition of Done](#definition-of-done)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## User Stories
 
-## Type Support for `.vue` Imports in TS
+### User Story 1
+Als Benutzer möchte ich eine Anrede automatisch in Ihre Bestandteile (Anrede, Titel, Geschlecht, Vorname und Nachname) zerlegen können, um die Informationen speichern oder weiterverarbeiten zu können.  
+**Priorität:** hoch  
+**Akzeptanzkriterien:** Eine eingegebene Zeichenkette wird korrekt in die einzelnen Bestandteile zerlegt.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+### User Story 2: 
+Als Benutzer möchte ich in der Lage sein, die einzelnen Bestandteile manuell anpassen zu können, um somit inkorrekte oder unvollständige Daten ergänzen zu können.  
+**Priorität:** hoch  
+**Akzeptanzkriterien:** Der Benutzer kann die zerlegten Bestandteile vor der Speicherung über manuelle Eingabe anpassen.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+### User Story 3:
+Als Benutzer möchte neue Titel (komischer Lernaal)  
+**Priorität:** mittel  
+**Akzeptanzkritierien:** 
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### User Story 4: 
+Als Benutzer möchte ich über das Tool eine standardisierte Briefanrede generieren lassen können, um eine einheitliche Kommunikation zu gewährleisten.
+**Priorität:** niedrig
+**Akzeptanzkriterien:** Es werden korrekte Briefanreden aus den einzelnen Informationen generiert. (bspw. „Sehr geehrter Herr Prof.“ bei männlichem Professor)
 
-## Customize configuration
+### User Story 5:
+Als Benutzer möchte ich, dass Präfixe/Suffixe (z.B. „von“, „de“, „van“, …) dem Nachnamen zugeordnet werden, damit ich korrekte Daten erhalte.  
+**Priorität:** niedrig  
+**Akzeptanzkriterien:** Die Präfixe/Suffixe werden korrekt zugeordnet.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Definition of Done
+
+* Benutzer kann Zeichenkette über grafische Oberfläche eingeben
+* Zerlegung der Zeichenkette funktioniert korrekt
+* Benutzer kann die zerlegten Daten auf grafischer Oberfläche anzeigen
+* Benutzer kann neue Titel über die grafische Oberfläche hinzufügen
+* Es werden korrekte Briefanreden aus den zerlegten Daten generiert
+* Der Kontaktparser kann mit Fehleingaben umgehen
+* Die Logik wird über unit tests getestet
+
 
 ## Project Setup
 
