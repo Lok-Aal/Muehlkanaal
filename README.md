@@ -5,6 +5,7 @@ Projekt im Modul *Softwarequalität* zur Erstellung eines Kontaktsplitters
 ## Content
 1. [User Stories](#user-stories)
 2. [Project Setup](#project-setup)
+3. [Definition of Done](#definition-of-done)
 
 ## User Stories
 
@@ -32,6 +33,17 @@ Als Benutzer möchte ich über das Tool eine standardisierte Briefanrede generie
 Als Benutzer möchte ich, dass Präfixe/Suffixe (z.B. „von“, „de“, „van“, …) dem Nachnamen zugeordnet werden, damit ich korrekte Daten erhalte.  
 **Priorität:** niedrig  
 **Akzeptanzkriterien:** Die Präfixe/Suffixe werden korrekt zugeordnet.
+
+
+## Definition of Done
+
+* Benutzer kann Zeichenkette über grafische Oberfläche eingeben
+* Zerlegung der Zeichenkette funktioniert korrekt
+* Benutzer kann die zerlegten Daten auf grafischer Oberfläche anzeigen
+* Benutzer kann neue Titel über die grafische Oberfläche hinzufügen
+* Es werden korrekte Briefanreden aus den zerlegten Daten generiert
+* Der Kontaktparser kann mit Fehleingaben umgehen
+* Die Logik wird über unit tests getestet
 
 
 ## Project Setup
