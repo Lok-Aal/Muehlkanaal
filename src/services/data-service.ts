@@ -5,7 +5,7 @@ export const titles: Array<string> = [
   'rer.',
   'nat.',
   'mult.',
-  'hc.',
+  'h.c.',
   'mult.',
   'B.Sc.',
   'B.Eng.',
