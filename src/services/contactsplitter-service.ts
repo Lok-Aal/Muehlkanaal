@@ -50,7 +50,7 @@ export function splitStringIntoContact(input: string) {
   }
   const title = mergeTitleFromArrayLastIndex(nameParts, isDiverse, lastTitleIndex)
 
-  if (!isDiverse) {
+  if (title && !isDiverse) {
     salutation = `${salutation} ${title}`
     letter_salutation = `${letter_salutation} ${title}`
   }

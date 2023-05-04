@@ -9,4 +9,6 @@ export const titles: Array<string> = [
   'mult.',
   'B.Sc.',
   'B.Eng.',
+  'Dipl.',
+  'Diplom'
 ]
