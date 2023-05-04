@@ -44,7 +44,7 @@ export function splitStringIntoContact(input: string) {
     })
     lastTitleIndex = i
     if (!titleFound) {
-      console.log('Title was not found, last title index is ' + i)
+      console.log(`Title '${nameParts[i]}' was not found, last title index is ${i}`)
       break
     }
   }
