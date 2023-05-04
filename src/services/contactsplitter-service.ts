@@ -1,25 +1,27 @@
 import { ref, type Ref } from 'vue'
-import { Contact, type contact } from '../types/contact'
+import { type Contact, type contact } from '../types/contact'
+import { titles } from './data-service'
 
-export const salutation: Ref<string> = ref('')
-export const title: Ref<string> = ref('')
-export const firstname: Ref<string> = ref('')
-export const lastname: Ref<string> = ref('')
-export const gender: Ref<'männlich' | 'weiblich' | 'divers' | ''> = ref('')
-
-function splitStringIntoContact(input: string) {
+export function splitStringIntoContact(input: string) {
   const nameParts = input.split(' ')
-
+  let isDiverse = false
   let salutation = ''
   let gender: 'männlich' | 'weiblich' | 'divers' | '' = ''
+
   if (nameParts[0] === 'Herr') {
-    salutation = 'Sehr geehrter Herr'
     gender = 'männlich'
   } else if (nameParts[0] === 'Frau') {
-    salutation = 'Sehr geehrte Frau'
     gender = 'weiblich'
   } else {
     gender = 'divers'
+    isDiverse = true
+  }
+
+  // Iterate over titles to check where the name begins.
+  // (Name begins as soon as a word doesn't match any titles known to the title-service.)
+  // (If the gender is diverse, start at the 2nd entry instead of the first, to prevent instant termination)
+  for (let i = isDiverse ? 1 : 0; i < nameParts.length; i++) {
+    titles.forEach
   }
 
   let titleParts: string[] = []
@@ -42,7 +44,8 @@ function splitStringIntoContact(input: string) {
     title: title,
     firstname: name,
     lastname: lastname,
-    gender: gender
+    gender: gender,
+    letter_salutation: ''
   }
 
   return output
