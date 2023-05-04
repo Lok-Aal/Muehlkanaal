@@ -3,7 +3,6 @@ import { Ref, ref, computed } from 'vue'
 import type { Contact } from './types/contact'
 import { splitStringIntoContact } from './services/contactsplitter-service'
 import { contacts, titles } from './services/data-service'
-import { title } from 'process'
 
 /**
  * The user input.
