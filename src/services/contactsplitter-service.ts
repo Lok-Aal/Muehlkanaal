@@ -1,5 +1,6 @@
 import { ref, type Ref } from 'vue'
 import { Contact, type contact } from '../types/contact'
+import { titles } from './data-service'
 
 export const salutation: Ref<string> = ref('')
 export const title: Ref<string> = ref('')
@@ -8,6 +9,7 @@ export const lastname: Ref<string> = ref('')
 export const gender: Ref<'männlich' | 'weiblich' | 'divers' | ''> = ref('')
 
 function splitStringIntoContact(input: string) {
+  let isDiverse = false
   const nameParts = input.split(' ')
 
   let salutation = ''
@@ -20,7 +22,12 @@ function splitStringIntoContact(input: string) {
     gender = 'weiblich'
   } else {
     gender = 'divers'
+    isDiverse = true
   }
+
+  titles.forEach((x) => {
+    console.log(x)
+  })
 
   let titleParts: string[] = []
   for (let i = 1; i < nameParts.length; i++) {
