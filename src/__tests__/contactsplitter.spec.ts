@@ -9,7 +9,7 @@ describe('Contact Splitter Tests', () => {
   /**
    * Test 1: Einfache Eingabe aus Anrede, Vorname und Nachname
    */
-  test('returns correct salutation, first name, last name and gender for input without title', () => {
+  test('input without title', () => {
     const testString: string = 'Frau Sandra Berger'
     const expectedResult: Contact = {
       salutation: 'Frau',
@@ -25,7 +25,7 @@ describe('Contact Splitter Tests', () => {
   /**
    * Test 2: Einfache Eingabe mit Titel
    */
-  test('returns correct salutation, title, first name, last name and gender for input with title', () => {
+  test('input with title', () => {
     const testString: string = 'Herr Dr. Sandro Gutmensch'
     const expectedResult: Contact = {
       salutation: 'Herr Dr.',
@@ -33,7 +33,7 @@ describe('Contact Splitter Tests', () => {
       firstname: 'Sandro',
       lastname: 'Gutmensch',
       gender: 'männlich',
-      letter_salutation: 'Sehr geehrter Herr'
+      letter_salutation: 'Sehr geehrter Herr Dr.'
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -41,13 +41,13 @@ describe('Contact Splitter Tests', () => {
   /**
    * Test 3: Eingabe mit Titel und Suffix
    */
-  test('returns correct salutation, title, last name with suffix and gender for input with title and suffix', () => {
+  test('input with title and suffix', () => {
     const testString: string = 'Herr Professor Heinreich Freiherr vom Wald'
     const expectedResult: Contact = {
       salutation: 'Herr Professor',
       title: 'Professor',
-      firstname: '',
-      lastname: 'Heinreich Freiherr vom Wald',
+      firstname: 'Heinreich',
+      lastname: 'Freiherr vom Wald',
       gender: 'männlich',
       letter_salutation: 'Sehr geehrter Herr Professor'
     }
@@ -57,13 +57,13 @@ describe('Contact Splitter Tests', () => {
   /**
    * Test 4: Eingabe mit mehreren Titeln
    */
-  test('returns correct salutation, title, first name, last name and gender for input with several titles', () => {
+  test('input with several titles', () => {
     const testString: string = 'Herr Dipl. Ing. Max Müller'
     const expectedResult: Contact = {
       salutation: 'Herr Dipl. Ing.',
       title: 'Dipl. Ing.',
       firstname: 'Max',
-      lastname: 'Müller',
+      lastname: 'Müller',
       gender: 'männlich',
       letter_salutation: 'Sehr geehrter Herr Dipl. Ing.'
     }
@@ -73,13 +73,13 @@ describe('Contact Splitter Tests', () => {
   /**
    * Test 5: Eingabe mit mehreren Titeln und Präfix bei Nachnamen
    */
-  test('returns correct salutation, title, first name, last name and gender for input with several titles and prefix', () => {
+  test('input with several titles and prefix', () => {
     const testString: string = 'Herr Dipl. Ing. Max von Müller'
     const expectedResult: Contact = {
       salutation: 'Herr Dipl. Ing.',
       title: 'Dipl. Ing.',
       firstname: 'Max',
-      lastname: 'von Müller',
+      lastname: 'von Müller',
       gender: 'männlich',
       letter_salutation: 'Sehr geehrter Herr Dipl. Ing.'
     }
@@ -89,7 +89,7 @@ describe('Contact Splitter Tests', () => {
   /**
    * Test 6: Eingabe mit sehr vielen Titeln
    */
-  test('returns correct salutation, title, first name, last name and gender for input with a lot of titles', () => {
+  test('input with a lot of titles', () => {
     const testString: string = 'Herr Dr. Ing. Dr. rer. nat. Dr. h.c. mult. Paul Steffens'
     const expectedResult: Contact = {
       salutation: 'Herr Dr. Ing. Dr. rer. nat. Dr. h.c. mult.',
@@ -105,7 +105,7 @@ describe('Contact Splitter Tests', () => {
   /**
    * Test 7: Eingabe mit Doppelname
    */
-  test('returns correct salutation, first name, last name and gender for input with double last name', () => {
+  test('input with double last name', () => {
     const testString: string = 'Herr Max Steffens-Müller'
     const expectedResult: Contact = {
       salutation: 'Herr',
@@ -121,7 +121,7 @@ describe('Contact Splitter Tests', () => {
   /**
    * Test 8: Eingabe ohne Anrede
    */
-  test('returns correct first name, last name and gender for input without salutation', () => {
+  test('input without salutation', () => {
     const testString: string = 'Max Müller'
     const expectedResult: Contact = {
       salutation: '',
@@ -129,7 +129,7 @@ describe('Contact Splitter Tests', () => {
       firstname: 'Max',
       lastname: 'Müller',
       gender: 'divers',
-      letter_salutation: 'Sehr geehrt'
+      letter_salutation: ''
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -137,7 +137,7 @@ describe('Contact Splitter Tests', () => {
   /**
    * Test 8: Eingabe ohne Anrede
    */
-  test('returns correct first name, last name and gender for input without salutation', () => {
+  test('input without salutation', () => {
     const testString: string = 'Max Müller'
     const expectedResult: Contact = {
       salutation: '',
@@ -145,7 +145,7 @@ describe('Contact Splitter Tests', () => {
       firstname: 'Max',
       lastname: 'Müller',
       gender: 'divers',
-      letter_salutation: 'Sehr geehrt'
+      letter_salutation: ''
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -153,7 +153,7 @@ describe('Contact Splitter Tests', () => {
   /**
    * Test 9: Nur ein Wort als Eingabe
    */
-  test('returns correct first name, last name and gender for input with just one word', () => {
+  test('input with just one word', () => {
     const testString: string = 'Müller'
     const expectedResult: Contact = {
       salutation: '',
@@ -161,7 +161,23 @@ describe('Contact Splitter Tests', () => {
       firstname: '',
       lastname: 'Müller',
       gender: 'divers',
-      letter_salutation: 'Sehr geehrt'
+      letter_salutation: ''
+    }
+    const result: Contact = splitStringIntoContact(testString)
+    expect(result).toEqual(expectedResult)
+  })
+   /**
+   * Test 10: Fehleingabe. Nur Eingaben mit Buchstaben, '.', '-' und Leerzeichen sind erlaubt.
+   */
+   test('input that has invalid characters', () => {
+    const testString: string = '0123'
+    const expectedResult: Contact = {
+      salutation: '',
+      title: '',
+      firstname: '',
+      lastname: 'Müller',
+      gender: 'divers',
+      letter_salutation: ''
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
