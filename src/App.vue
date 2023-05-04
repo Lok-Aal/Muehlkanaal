@@ -20,6 +20,7 @@ const parsedContact: Ref<Contact> = ref(null)
  * Submits the input and calls the splitter method.
  */
 function submit() {
+  if (!input.value.match(/^[a-zA-Z . -]*$/)) return
   splitStringIntoContact(input.value)
   submitted.value = true
   console.log('submitted: ' + input.value)
