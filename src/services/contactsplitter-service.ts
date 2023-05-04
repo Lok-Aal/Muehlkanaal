@@ -2,6 +2,8 @@ import { ref, type Ref } from 'vue'
 import { type Contact, type contact } from '../types/contact'
 import { titles } from './data-service'
 
+
+// Main function to split an input string into a contact object
 export function splitStringIntoContact(input: string) {
   // Variables for default values in empty contacts
   let firstname = ''
