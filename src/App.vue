@@ -1,20 +1,41 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
-import { salutation, title, firstname, lastname, gender } from '@/services/contactsplitter-service'
+import { Contact } from './types/contact'
 
+/**
+ * The user input.
+ */
 const input: Ref<string> = ref('')
+/**
+ * Stores the submitted state (if the input was submitted).
+ */
 const submitted: Ref<boolean> = ref(false)
+/**
+ * Stores the parsed contact that was retrieved from the splitter.
+ */
+const parsedContact: Ref<Contact> = ref(null)
 
+/**
+ * Submits the input and calls the splitter method.
+ */
 function submit() {
+  
   submitted.value = true
   console.log('submitted: ' + input.value)
 }
 
+/**
+ * Hides the detail view.
+ */
 function hide() {
   submitted.value = false
   console.log('hide')
 }
 
+/**
+ * Stores the contact and the letter salutation in the database.
+ * NOTE: Database is not implemented yet.
+ */
 function store() {
   submitted.value = false
   console.log('store')
@@ -38,19 +59,19 @@ function store() {
 
   <div class="changingArea" v-if="submitted">
     <p>Anrede:</p>
-    <input v-model="salutation" />
+    <input v-model="parsedContact.salutation" />
 
     <p>Titel:</p>
-    <input v-model="title" />
+    <input v-model="parsedContact.title" />
 
     <p>Vorname:</p>
-    <input v-model="firstname" />
+    <input v-model="parsedContact.firstname" />
 
     <p>Nachname:</p>
-    <input v-model="lastname" />
+    <input v-model="parsedContact.lastname" />
 
     <p>Geschlecht:</p>
-    <input v-model="gender" />
+    <input v-model="parsedContact.gender" />
 
     <button @click="store()" v-if="submitted">Speichern</button>
   </div>
