@@ -2,8 +2,9 @@ import { ref, type Ref } from 'vue'
 import { type Contact, type contact } from '../types/contact'
 import { titles } from './data-service'
 
-
-// Main function to split an input string into a contact object
+/**
+ *  Main function to split an input string into a contact object
+ */
 export function splitStringIntoContact(input: string) {
   // Variables for default values in empty contacts
   let firstname = ''
@@ -75,7 +76,6 @@ export function splitStringIntoContact(input: string) {
   // Set the title
   title = mergeTitleFromArrayLastIndex(nameParts, isDiverse, lastTitleIndex)
 
-
   // Extend the two salutations by adding the title.
   // The salutation remain empty if the gender is set to "divers"
   if (title && !isDiverse) {
@@ -89,7 +89,6 @@ export function splitStringIntoContact(input: string) {
   firstname = nameObject.name
   lastname = nameObject.lastname
 
-
   // Create the output object of type "contact", given the generated parameters
   const output: contact = {
     salutation: salutation,
@@ -102,9 +101,14 @@ export function splitStringIntoContact(input: string) {
   return output
 }
 
-// Splits the nameParts after the given index (after nameParts that belong to the title) into a name and surname
-// The name always is the first entry of the sliced string
-// The surname is created by joining the remaining nameParts
+/**
+ * Splits the nameParts after the given index (after nameParts that belong to the title) into a name and surname
+ * The name is always the first entry of the sliced string
+ * The surname is created by joining the remaining nameParts
+ * @param array
+ * @param index
+ * @returns
+ */
 function splitNameFromArrayIndex(array: string[], index: number) {
   const slicedArray = array.slice(index)
   const name = slicedArray[0]
@@ -112,9 +116,14 @@ function splitNameFromArrayIndex(array: string[], index: number) {
   return { name: name, lastname: surname }
 }
 
-
-// Merges all entries in nameParts that belong to the title.
-// If the isDiverse-flag is set, the slicing will begin from the 2nd entry, since the first is occupied for the gender specific salutation
+/**
+ * Merges all entries in nameParts that belong to the title.
+ * If the isDiverse-flag is set, the slicing will begin from the 2nd entry, since the first is occupied for the gender specific salutation
+ * @param array
+ * @param isDiverse
+ * @param index
+ * @returns
+ */
 function mergeTitleFromArrayLastIndex(array: string[], isDiverse: boolean, index: number) {
   const slicedArray = array.slice(isDiverse ? 0 : 1, index)
   const outputString = slicedArray.join(' ')
