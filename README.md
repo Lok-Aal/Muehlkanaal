@@ -1,4 +1,4 @@
-# contactsplitter
+# Mühlkanaal - Kontaktsplitter
 
 Projekt im Modul *Softwarequalität* zur Erstellung eines Kontaktsplitters
 
