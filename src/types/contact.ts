@@ -4,6 +4,7 @@ export interface contact {
     firstname: string;
     lastname: string;
     gender: 'männlich' | 'weiblich' | 'divers' | '';
+    letter_salutation: string;
 }
 
 export type Contact = contact;
