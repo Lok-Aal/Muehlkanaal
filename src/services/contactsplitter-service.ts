@@ -4,13 +4,26 @@ import { titles } from './data-service'
 
 export function splitStringIntoContact(input: string) {
   const nameParts = input.split(' ')
+
+  // Convert all parts of the name to lower case and remove dots for better comparison
+  const namePartsClean: any = []
+  nameParts.forEach((part) => {
+    namePartsClean.push(part.replace('.', '').toLowerCase())
+  })
+  console.log(nameParts, namePartsClean)
+
   let isDiverse = false
   let salutation = ''
   let gender: 'männlich' | 'weiblich' | 'divers' | '' = ''
+  let letter_salutation = ''
 
   if (nameParts[0] === 'Herr') {
+    salutation = 'Herr'
+    letter_salutation = 'Sehr geehrter Herr'
     gender = 'männlich'
   } else if (nameParts[0] === 'Frau') {
+    salutation = 'Frau'
+    letter_salutation = 'Sehr geehrte Frau'
     gender = 'weiblich'
   } else {
     gender = 'divers'
@@ -20,33 +33,51 @@ export function splitStringIntoContact(input: string) {
   // Iterate over titles to check where the name begins.
   // (Name begins as soon as a word doesn't match any titles known to the title-service.)
   // (If the gender is diverse, start at the 2nd entry instead of the first, to prevent instant termination)
-  for (let i = isDiverse ? 1 : 0; i < nameParts.length; i++) {
-    titles.forEach
-  }
-
-  let titleParts: string[] = []
-  for (let i = 1; i < nameParts.length; i++) {
-    const part = nameParts[i]
-    if (part.endsWith('.')) {
-      titleParts.push(part)
-    } else {
+  let lastTitleIndex: number = 0
+  for (let i = isDiverse ? 0 : 1; i < nameParts.length; i++) {
+    let titleFound = false
+    titles.forEach((title) => {
+      if (title.replace('.', '').toLowerCase() === namePartsClean[i]) {
+        console.log('Title found', title)
+        titleFound = true
+      }
+    })
+    lastTitleIndex = i
+    if (!titleFound) {
+      console.log('Title was not found, last title index is ' + i)
       break
     }
   }
-  const title = titleParts.join(' ')
+  const title = mergeTitleFromArrayLastIndex(nameParts, isDiverse, lastTitleIndex)
 
-  const name = nameParts[titleParts.length + 1]
+  if (!isDiverse) letter_salutation = `${letter_salutation} ${title}`
 
-  const lastname = nameParts[nameParts.length - 1]
+  const nameObject = splitNameFromArrayIndex(nameParts, lastTitleIndex)
+  const firstname = nameObject.name
+  const lastname = nameObject.lastname
 
   const output: contact = {
     salutation: salutation,
     title: title,
-    firstname: name,
+    firstname: firstname,
     lastname: lastname,
     gender: gender,
     letter_salutation: ''
   }
 
   return output
+}
+
+function splitNameFromArrayIndex(array: string[], index: number) {
+  const slicedArray = array.slice(index)
+  console.log('ASS', slicedArray)
+  const name = slicedArray[0]
+  const surname = slicedArray.slice(1).join(' ')
+  return { name: name, lastname: surname }
+}
+
+function mergeTitleFromArrayLastIndex(array: string[], isDiverse: boolean, index: number) {
+  const slicedArray = array.slice(isDiverse ? 0 : 1, index)
+  const outputString = slicedArray.join(' ')
+  return outputString
 }

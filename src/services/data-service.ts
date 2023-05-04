@@ -1,14 +1,12 @@
 export const titles: Array<string> = [
-  'Prof',
+  'Prof.',
   'Professor',
-  'Dr',
-  'rer',
-  'nat',
-  'Ing',
-  'mult',
-  'hc',
-  'mult',
-  'B',
-  'Sc.',
-  'Eng.'
+  'Dr.',
+  'rer.',
+  'nat.',
+  'mult.',
+  'hc.',
+  'mult.',
+  'B.Sc.',
+  'B.Eng.',
 ]
