@@ -16,7 +16,8 @@ describe('Contact Splitter Tests', () => {
       title: '',
       firstname: 'Sandra',
       lastname: 'Berger',
-      gender: 'weiblich'
+      gender: 'weiblich',
+      letter_salutation: 'Sehr geehrte Frau'
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -27,11 +28,12 @@ describe('Contact Splitter Tests', () => {
   test('returns correct salutation, title, first name, last name and gender for input with title', () => {
     const testString: string = 'Herr Dr. Sandro Gutmensch'
     const expectedResult: Contact = {
-      salutation: 'Herr',
-      title: 'Dr. ',
+      salutation: 'Herr Dr.',
+      title: 'Dr.',
       firstname: 'Sandro',
       lastname: 'Gutmensch',
-      gender: 'männlich'
+      gender: 'männlich',
+      letter_salutation: 'Sehr geehrter Herr'
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -40,13 +42,14 @@ describe('Contact Splitter Tests', () => {
    * Test 3: Eingabe mit Titel und Suffix
    */
   test('returns correct salutation, title, last name with suffix and gender for input with title and suffix', () => {
-    const testString: string = 'Professor Heinreich Freiherr vom Wald'
+    const testString: string = 'Herr Professor Heinreich Freiherr vom Wald'
     const expectedResult: Contact = {
-      salutation: 'Herr',
+      salutation: 'Herr Professor',
       title: 'Professor',
       firstname: '',
       lastname: 'Heinreich Freiherr vom Wald',
-      gender: 'männlich'
+      gender: 'männlich',
+      letter_salutation: 'Sehr geehrter Herr Professor'
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -57,11 +60,12 @@ describe('Contact Splitter Tests', () => {
   test('returns correct salutation, title, first name, last name and gender for input with several titles', () => {
     const testString: string = 'Herr Dipl. Ing. Max Müller'
     const expectedResult: Contact = {
-      salutation: 'Herr',
+      salutation: 'Herr Dipl. Ing.',
       title: 'Dipl. Ing.',
       firstname: 'Max',
       lastname: 'Müller',
-      gender: 'männlich'
+      gender: 'männlich',
+      letter_salutation: 'Sehr geehrter Herr Dipl. Ing.'
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -72,11 +76,12 @@ describe('Contact Splitter Tests', () => {
   test('returns correct salutation, title, first name, last name and gender for input with several titles and prefix', () => {
     const testString: string = 'Herr Dipl. Ing. Max von Müller'
     const expectedResult: Contact = {
-      salutation: 'Herr',
+      salutation: 'Herr Dipl. Ing.',
       title: 'Dipl. Ing.',
       firstname: 'Max',
       lastname: 'von Müller',
-      gender: 'männlich'
+      gender: 'männlich',
+      letter_salutation: 'Sehr geehrter Herr Dipl. Ing.'
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -87,11 +92,12 @@ describe('Contact Splitter Tests', () => {
   test('returns correct salutation, title, first name, last name and gender for input with a lot of titles', () => {
     const testString: string = 'Herr Dr. Ing. Dr. rer. nat. Dr. h.c. mult. Paul Steffens'
     const expectedResult: Contact = {
-      salutation: 'Herr',
+      salutation: 'Herr Dr. Ing. Dr. rer. nat. Dr. h.c. mult.',
       title: 'Dr. Ing. Dr. rer. nat. Dr. h.c. mult.',
       firstname: 'Paul',
       lastname: 'Steffens',
-      gender: 'männlich'
+      gender: 'männlich',
+      letter_salutation: 'Sehr geehrter Herr Dr. Ing. Dr. rer. nat. Dr. h.c. mult.'
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -106,7 +112,8 @@ describe('Contact Splitter Tests', () => {
       title: '',
       firstname: 'Max',
       lastname: 'Steffens-Müller',
-      gender: 'männlich'
+      gender: 'männlich',
+      letter_salutation: 'Sehr geehrter Herr'
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -121,7 +128,8 @@ describe('Contact Splitter Tests', () => {
       title: '',
       firstname: 'Max',
       lastname: 'Müller',
-      gender: 'divers'
+      gender: 'divers',
+      letter_salutation: 'Sehr geehrt'
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -136,7 +144,8 @@ describe('Contact Splitter Tests', () => {
       title: '',
       firstname: 'Max',
       lastname: 'Müller',
-      gender: 'divers'
+      gender: 'divers',
+      letter_salutation: 'Sehr geehrt'
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
@@ -151,7 +160,8 @@ describe('Contact Splitter Tests', () => {
       title: '',
       firstname: '',
       lastname: 'Müller',
-      gender: 'divers'
+      gender: 'divers',
+      letter_salutation: 'Sehr geehrt'
     }
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
