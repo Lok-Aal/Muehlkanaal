@@ -4,8 +4,9 @@ Projekt im Modul *Softwarequalität* zur Erstellung eines Kontaktsplitters
 
 ## Content
 1. [User Stories](#user-stories)
-2. [Project Setup](#project-setup)
 3. [Definition of Done](#definition-of-done)
+4. [Project Structure](#project-structure)
+5. [Project Setup](#project-setup)
 
 ## User Stories
 
@@ -45,8 +46,17 @@ Als Benutzer möchte ich, dass Präfixe/Suffixe (z.B. „von“, „de“, „va
 * Der Kontaktparser kann mit Fehleingaben umgehen
 * Die Logik wird über unit tests getestet
 
+## Project Structure
+Speicherorte der, für die Bewertung relevanten, Dateien:
+
+**Frontend:** `src/App.vue`  
+**Kontaktsplitter:** `src/services/contactsplitter-service.ts`  
+**Kontakt Objekt:** `src/types/contact.ts`  
+**Unit Tests:** `src/_tests_/contactsplitter.spec.ts`
+
 
 ## Project Setup
+Starten der Applikation über folgende Commands:  
 
 ```sh
 npm install
