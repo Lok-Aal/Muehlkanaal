@@ -3,7 +3,24 @@ import { type Contact, type contact } from '../types/contact'
 import { titles } from './data-service'
 
 export function splitStringIntoContact(input: string) {
+  let isDiverse = false
+  let salutation = ''
+  let gender: 'männlich' | 'weiblich' | 'divers' | '' = 'divers'
+  let letter_salutation = ''
+
   const nameParts = input.split(' ')
+  if (nameParts.length === 1) {
+    const output: contact = {
+      salutation: '',
+      title: '',
+      firstname: '',
+      lastname: nameParts[0],
+      gender: gender,
+      letter_salutation: letter_salutation
+    }
+
+    return output
+  }
 
   // Convert all parts of the name to lower case and remove dots for better comparison
   const namePartsClean: any = []
@@ -11,11 +28,6 @@ export function splitStringIntoContact(input: string) {
     namePartsClean.push(part.replace('.', '').toLowerCase())
   })
   console.log(nameParts, namePartsClean)
-
-  let isDiverse = false
-  let salutation = ''
-  let gender: 'männlich' | 'weiblich' | 'divers' | '' = ''
-  let letter_salutation = ''
 
   if (nameParts[0] === 'Herr') {
     salutation = 'Herr'
@@ -26,7 +38,6 @@ export function splitStringIntoContact(input: string) {
     letter_salutation = 'Sehr geehrte Frau'
     gender = 'weiblich'
   } else {
-    gender = 'divers'
     isDiverse = true
   }
 

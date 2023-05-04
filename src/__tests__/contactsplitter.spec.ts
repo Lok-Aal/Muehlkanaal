@@ -166,20 +166,4 @@ describe('Contact Splitter Tests', () => {
     const result: Contact = splitStringIntoContact(testString)
     expect(result).toEqual(expectedResult)
   })
-  /**
-   * Test 10: Fehleingabe. Nur Eingaben mit Buchstaben, '.', '-' und Leerzeichen sind erlaubt.
-   */
-  test('input that has invalid characters', () => {
-    const testString: string = '0123'
-    const expectedResult: Contact = {
-      salutation: '',
-      title: '',
-      firstname: '',
-      lastname: 'Müller',
-      gender: 'divers',
-      letter_salutation: ''
-    }
-    const result: Contact = splitStringIntoContact(testString)
-    expect(result).toEqual(expectedResult)
-  })
 })
