@@ -2,7 +2,8 @@
 import { Ref, ref, computed } from 'vue'
 import type { Contact } from './types/contact'
 import { splitStringIntoContact } from './services/contactsplitter-service'
-import { contacts } from './services/data-service'
+import { contacts, titles } from './services/data-service'
+import { title } from 'process'
 
 /**
  * The user input.
@@ -43,6 +44,9 @@ function hide() {
  * NOTE: Database is not implemented yet.
  */
 function store() {
+  if(!titles.includes(parsedContact.value.title)) {
+    titles.push(parsedContact.value.title)
+  }
   contacts.value.push(parsedContact.value)
   submitted.value = false
   console.log('store')
