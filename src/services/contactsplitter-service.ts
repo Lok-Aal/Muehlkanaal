@@ -1,4 +1,5 @@
-import { ref, type Ref } from "vue"
+import { ref, type Ref } from 'vue'
+import { Contact, type contact } from '../types/contact'
 
 export const salutation: Ref<string> = ref('')
 export const title: Ref<string> = ref('')
@@ -7,36 +8,42 @@ export const lastname: Ref<string> = ref('')
 export const gender: Ref<'männlich' | 'weiblich' | 'divers' | ''> = ref('')
 
 function splitStringIntoContact(input: string) {
-const nameParts = input.split(' ');
+  const nameParts = input.split(' ')
 
-let anrede = '';
-let geschlecht = '';
-if (nameParts[0] === 'Herr') {
-  anrede = 'Sehr geehrter Herr';
-  geschlecht = 'männlich';
-} else if (nameParts[0] === 'Frau') {
-  anrede = 'Sehr geehrte Frau';
-  geschlecht = 'weiblich';
-}
-
-// Schritt 2: Titel bestimmen
-let titleParts: string[] = [];
-for (let i = 1; i < nameParts.length; i++) {
-  const part = nameParts[i];
-  if (part.endsWith('.')) {
-    titleParts.push(part);
+  let salutation = ''
+  let gender: 'männlich' | 'weiblich' | 'divers' | '' = ''
+  if (nameParts[0] === 'Herr') {
+    salutation = 'Sehr geehrter Herr'
+    gender = 'männlich'
+  } else if (nameParts[0] === 'Frau') {
+    salutation = 'Sehr geehrte Frau'
+    gender = 'weiblich'
   } else {
-    break;
+    gender = 'divers'
   }
-}
-const titel = titleParts.join(' ');
 
-// Schritt 3: Vorname bestimmen
-const vorname = nameParts[titleParts.length + 1];
+  let titleParts: string[] = []
+  for (let i = 1; i < nameParts.length; i++) {
+    const part = nameParts[i]
+    if (part.endsWith('.')) {
+      titleParts.push(part)
+    } else {
+      break
+    }
+  }
+  const title = titleParts.join(' ')
 
-// Schritt 4: Nachname bestimmen
-const nachname = nameParts[nameParts.length - 1];
+  const name = nameParts[titleParts.length + 1]
 
-// Rückgabe als NameParts-Objekt
-return { salutation, geschlecht, title, vorname, nachname };
+  const lastname = nameParts[nameParts.length - 1]
+
+  const output: contact = {
+    salutation: salutation,
+    title: title,
+    firstname: name,
+    lastname: lastname,
+    gender: gender
+  }
+
+  return output
 }
