@@ -1,3 +1,6 @@
+import type { Contact } from "@/types/contact"
+import { ref, type Ref } from "vue"
+
 export const titles: Array<string> = [
   'Prof.',
   'Professor',
@@ -13,3 +16,5 @@ export const titles: Array<string> = [
   'Ing.',
   'Diplom'
 ]
+
+export const contacts: Ref<Array<Contact>> = ref([])
