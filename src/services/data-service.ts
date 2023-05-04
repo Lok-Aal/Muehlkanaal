@@ -10,5 +10,6 @@ export const titles: Array<string> = [
   'B.Sc.',
   'B.Eng.',
   'Dipl.',
+  'Ing.',
   'Diplom'
 ]
