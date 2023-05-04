@@ -8,8 +8,7 @@ export const firstname: Ref<string> = ref('')
 export const lastname: Ref<string> = ref('')
 export const gender: Ref<'männlich' | 'weiblich' | 'divers' | ''> = ref('')
 
-function splitStringIntoContact(input: string) {
-  let isDiverse = false
+export function splitStringIntoContact(input: string) {
   const nameParts = input.split(' ')
 
   let salutation = ''
