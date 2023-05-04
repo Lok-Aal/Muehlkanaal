@@ -50,7 +50,10 @@ export function splitStringIntoContact(input: string) {
   }
   const title = mergeTitleFromArrayLastIndex(nameParts, isDiverse, lastTitleIndex)
 
-  if (!isDiverse) letter_salutation = `${letter_salutation} ${title}`
+  if (!isDiverse) {
+    salutation = `${salutation} ${title}`
+    letter_salutation = `${letter_salutation} ${title}`
+  }
 
   const nameObject = splitNameFromArrayIndex(nameParts, lastTitleIndex)
   const firstname = nameObject.name
@@ -62,7 +65,7 @@ export function splitStringIntoContact(input: string) {
     firstname: firstname,
     lastname: lastname,
     gender: gender,
-    letter_salutation: ''
+    letter_salutation: letter_salutation
   }
 
   return output
@@ -70,7 +73,6 @@ export function splitStringIntoContact(input: string) {
 
 function splitNameFromArrayIndex(array: string[], index: number) {
   const slicedArray = array.slice(index)
-  console.log('ASS', slicedArray)
   const name = slicedArray[0]
   const surname = slicedArray.slice(1).join(' ')
   return { name: name, lastname: surname }
