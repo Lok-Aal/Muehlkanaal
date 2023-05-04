@@ -1,14 +1,8 @@
 import { ref, type Ref } from 'vue'
-import { Contact, type contact } from '../types/contact'
+import { type Contact, type contact } from '../types/contact'
 import { titles } from './data-service'
 
-export const salutation: Ref<string> = ref('')
-export const title: Ref<string> = ref('')
-export const firstname: Ref<string> = ref('')
-export const lastname: Ref<string> = ref('')
-export const gender: Ref<'männlich' | 'weiblich' | 'divers' | ''> = ref('')
-
-function splitStringIntoContact(input: string) {
+export function splitStringIntoContact(input: string) {
   let isDiverse = false
   const nameParts = input.split(' ')
 

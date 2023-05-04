@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
-import { Contact } from './types/contact'
+import type { Contact } from './types/contact'
+import { splitStringIntoContact } from './services/contactsplitter-service'
 
 /**
  * The user input.
@@ -19,7 +20,7 @@ const parsedContact: Ref<Contact> = ref(null)
  * Submits the input and calls the splitter method.
  */
 function submit() {
-  
+  splitStringIntoContact(input.value)
   submitted.value = true
   console.log('submitted: ' + input.value)
 }
