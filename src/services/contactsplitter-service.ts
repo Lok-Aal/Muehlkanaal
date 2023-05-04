@@ -62,13 +62,11 @@ export function splitStringIntoContact(input: string) {
     let titleFound = false
     titles.forEach((title) => {
       if (title.replace('.', '').toLowerCase() === namePartsClean[i]) {
-        console.log('Title found', title)
         titleFound = true
       }
     })
     lastTitleIndex = i
     if (!titleFound) {
-      console.log(`Title '${nameParts[i]}' was not found, last title index is ${i}`)
       break
     }
   }
